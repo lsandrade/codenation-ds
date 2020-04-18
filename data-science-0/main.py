@@ -84,12 +84,13 @@ q2()
 # 
 # Quantos usuários únicos há no dataset? Responda como um único escalar.
 
-# In[6]:
+# In[31]:
 
 
 def q3():
-    # Retorne aqui o resultado da questão 3.
-    pass
+    return int(black_friday.nunique().User_ID)
+
+q3()
 
 
 # ## Questão 4

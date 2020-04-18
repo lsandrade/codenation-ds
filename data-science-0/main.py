@@ -53,14 +53,11 @@ black_friday.info()
 # 
 # Quantas observações e quantas colunas há no dataset? Responda no formato de uma tuple `(n_observacoes, n_colunas)`.
 
-# In[16]:
+# In[36]:
 
 
 def q1():
-    n_observacoes = black_friday.count()[0]
-    n_colunas = len(black_friday.columns)
-    
-    return (n_observacoes, n_colunas)
+    return black_friday.shape
 
 q1()
 
@@ -97,12 +94,15 @@ q3()
 # 
 # Quantos tipos de dados diferentes existem no dataset? Responda como um único escalar.
 
-# In[7]:
+# In[35]:
 
 
 def q4():
-    # Retorne aqui o resultado da questão 4.
-    pass
+    # tipos = (_ for _ in black_friday.info())
+    return 0
+black_friday.shape
+
+# q4()
 
 
 # ## Questão 5

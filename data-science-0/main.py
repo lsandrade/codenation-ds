@@ -69,12 +69,15 @@ q1()
 # 
 # Há quantas mulheres com idade entre 26 e 35 anos no dataset? Responda como um único escalar.
 
-# In[5]:
+# In[25]:
 
 
 def q2():
-    # Retorne aqui o resultado da questão 2.
-    pass
+    condicoes = (black_friday['Gender'] == 'F')                & (black_friday['Age'] == '26-35')
+    
+    return len(black_friday[condicoes])
+
+q2()
 
 
 # ## Questão 3

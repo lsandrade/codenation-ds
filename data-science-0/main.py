@@ -108,13 +108,13 @@ q4()
 # 
 # Qual porcentagem dos registros possui ao menos um valor null (`None`, `ǸaN` etc)? Responda como um único escalar entre 0 e 1.
 
-# In[55]:
+# In[49]:
 
 
 def q5():
-    is_na = black_friday.isna().sum()
-    columns = black_friday.shape[1]
-    return np.count_nonzero(is_na) / columns
+    is_na = black_friday[black_friday.isna().any(1)].shape[0]
+    total_registries = black_friday.shape[0]
+    return is_na / total_registries
 
 q5()
 

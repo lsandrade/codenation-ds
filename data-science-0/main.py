@@ -123,12 +123,14 @@ q5()
 # 
 # Quantos valores null existem na variável (coluna) com o maior número de null? Responda como um único escalar.
 
-# In[9]:
+# In[57]:
 
 
 def q6():
-    # Retorne aqui o resultado da questão 6.
-    pass
+    is_na = black_friday.isna().sum()
+    return max(is_na)
+
+q6()
 
 
 # ## Questão 7

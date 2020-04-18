@@ -94,27 +94,29 @@ q3()
 # 
 # Quantos tipos de dados diferentes existem no dataset? Responda como um único escalar.
 
-# In[35]:
+# In[41]:
 
 
 def q4():
-    # tipos = (_ for _ in black_friday.info())
-    return 0
-black_friday.shape
+    return len(pd.unique(black_friday.dtypes))
 
-# q4()
+
+q4()
 
 
 # ## Questão 5
 # 
 # Qual porcentagem dos registros possui ao menos um valor null (`None`, `ǸaN` etc)? Responda como um único escalar entre 0 e 1.
 
-# In[8]:
+# In[55]:
 
 
 def q5():
-    # Retorne aqui o resultado da questão 5.
-    pass
+    is_na = black_friday.isna().sum()
+    columns = black_friday.shape[1]
+    return np.count_nonzero(is_na) / columns
+
+q5()
 
 
 # ## Questão 6

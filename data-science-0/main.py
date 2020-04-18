@@ -26,7 +26,7 @@ black_friday = pd.read_csv("black_friday.csv")
 
 # ## Inicie sua análise a partir daqui
 
-# In[5]:
+# In[3]:
 
 
 black_friday.head()
@@ -137,12 +137,13 @@ q6()
 # 
 # Qual o valor mais frequente (sem contar nulls) em `Product_Category_3`? Responda como um único escalar.
 
-# In[10]:
+# In[5]:
 
 
 def q7():
-    # Retorne aqui o resultado da questão 7.
-    pass
+    return black_friday.Product_Category_3.mode()[0]
+
+q7()
 
 
 # ## Questão 8

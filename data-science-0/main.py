@@ -165,12 +165,18 @@ q8()
 # 
 # Quantas ocorrências entre -1 e 1 inclusive existem da variáel `Purchase` após sua padronização? Responda como um único escalar.
 
-# In[12]:
+# In[30]:
 
 
 def q9():
-    # Retorne aqui o resultado da questão 9.
-    pass
+    purchase = black_friday.Purchase
+    purchase_st = (purchase - purchase.mean())                     / (purchase.max() - purchase.min())
+    
+    conditions = (purchase_st >= -1) & (purchase_st <= 1)
+    return int(purchase_st[conditions].count())
+    
+
+q9()
 
 
 # ## Questão 10

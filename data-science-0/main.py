@@ -150,12 +150,15 @@ q7()
 # 
 # Qual a nova média da variável (coluna) `Purchase` após sua normalização? Responda como um único escalar.
 
-# In[11]:
+# In[20]:
 
 
 def q8():
-    # Retorne aqui o resultado da questão 8.
-    pass
+    purchase = black_friday.Purchase
+    purchase_norm = (purchase - purchase.min())                     / (purchase.max() - purchase.min())
+    return float(purchase_norm.mean())
+
+q8()
 
 
 # ## Questão 9

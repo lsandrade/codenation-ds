@@ -183,10 +183,13 @@ q9()
 # 
 # Podemos afirmar que se uma observação é null em `Product_Category_2` ela também o é em `Product_Category_3`? Responda com um bool (`True`, `False`).
 
-# In[13]:
+# In[42]:
 
 
 def q10():
-    # Retorne aqui o resultado da questão 10.
-    pass
+    return bool((black_friday.Product_Category_2.isna() ==
+           black_friday.Product_Category_3.isna()).all())
+    
+
+q10()
 

@@ -15,4 +15,4 @@ test_main.py::test_q8 PASSED                                             [ 80%]
 test_main.py::test_q9 PASSED                                             [ 90%]
 test_main.py::test_q10 PASSED                                            [100%]
 
-========================== 10 passed in 3.01 seconds ===========================
+========================== 10 passed in 2.99 seconds ===========================

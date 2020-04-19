@@ -16,4 +16,4 @@ test_submit.py::test_q9 PASSED                                           [ 90%]
 test_submit.py::test_q10 PASSED                                          [100%]
 
 - generated xml file: /Users/luanandrade/codenation/data-science-0/output.xml --
-========================== 10 passed in 3.29 seconds ===========================
+========================== 10 passed in 3.20 seconds ===========================

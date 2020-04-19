@@ -81,7 +81,7 @@ q2()
 # 
 # Quantos usuários únicos há no dataset? Responda como um único escalar.
 
-# In[31]:
+# In[70]:
 
 
 def q3():
@@ -94,11 +94,11 @@ q3()
 # 
 # Quantos tipos de dados diferentes existem no dataset? Responda como um único escalar.
 
-# In[41]:
+# In[72]:
 
 
 def q4():
-    return len(pd.unique(black_friday.dtypes))
+    return black_friday.dtypes.nunique()
 
 
 q4()

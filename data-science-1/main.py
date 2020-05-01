@@ -96,13 +96,13 @@ dataframe.binomial.plot()
 # 
 # Em outra palavras, sejam `q1_norm`, `q2_norm` e `q3_norm` os quantis da variável `normal` e `q1_binom`, `q2_binom` e `q3_binom` os quantis da variável `binom`, qual a diferença `(q1_norm - q1 binom, q2_norm - q2_binom, q3_norm - q3_binom)`?
 
-# In[75]:
+# In[76]:
 
 
 def q1():
     normal = (get_quantile(dataframe.normal, '25'), 
-            get_quantile(dataframe.normal, '50'), 
-            get_quantile(dataframe.normal, '75'))
+              get_quantile(dataframe.normal, '50'), 
+              get_quantile(dataframe.normal, '75'))
     
     binomial = (get_quantile(dataframe.binomial, '25'), 
                 get_quantile(dataframe.binomial, '50'), 
@@ -127,12 +127,17 @@ q1()
 # 
 # Considere o intervalo $[\bar{x} - s, \bar{x} + s]$, onde $\bar{x}$ é a média amostral e $s$ é o desvio padrão. Qual a probabilidade nesse intervalo, calculada pela função de distribuição acumulada empírica (CDF empírica) da variável `normal`? Responda como uma único escalar arredondado para três casas decimais.
 
-# In[6]:
+# In[83]:
 
 
 def q2():
-    # Retorne aqui o resultado da questão 2.
-    pass
+    ecdf = ECDF(dataframe['normal'])
+    
+    return float(
+        round(ecdf(dataframe.normal.mean() + dataframe['normal'].std()) 
+              - ecdf(dataframe.normal.mean() - dataframe['normal'].std()), 3))
+    
+q2()
 
 
 # Para refletir:

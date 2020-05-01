@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="4" name="pytest" skipped="0" tests="5" time="1.976"><testcase classname="test_submit" file="test_submit.py" line="3" name="test_q1" time="0.015"></testcase><testcase classname="test_submit" file="test_submit.py" line="9" name="test_q2" time="0.001"><failure message="TypeError: type NoneType doesn&apos;t define __round__ method">E   TypeError: type NoneType doesn&apos;t define __round__ method</failure></testcase><testcase classname="test_submit" file="test_submit.py" line="15" name="test_q3" time="0.001"><failure message="assert None == (0.106, 0.22)
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="3" name="pytest" skipped="0" tests="5" time="2.010"><testcase classname="test_submit" file="test_submit.py" line="3" name="test_q1" time="0.014"></testcase><testcase classname="test_submit" file="test_submit.py" line="9" name="test_q2" time="0.002"></testcase><testcase classname="test_submit" file="test_submit.py" line="15" name="test_q3" time="0.001"><failure message="assert None == (0.106, 0.22)
   -None
   +(0.106, 0.22)">E   assert None == (0.106, 0.22)
       -None

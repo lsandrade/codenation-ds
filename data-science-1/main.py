@@ -152,7 +152,7 @@ q2()
 # 
 # Em outras palavras, sejam `m_binom` e `v_binom` a média e a variância da variável `binomial`, e `m_norm` e `v_norm` a média e a variância da variável `normal`. Quais as diferenças `(m_binom - m_norm, v_binom - v_norm)`?
 
-# In[91]:
+# In[92]:
 
 
 def q3():
@@ -173,7 +173,7 @@ q3()
 
 # ### _Setup_ da parte 2
 
-# In[8]:
+# In[93]:
 
 
 stars = pd.read_csv("pulsar_stars.csv")
@@ -190,10 +190,35 @@ stars.loc[:, "target"] = stars.target.astype(bool)
 
 # ## Inicie sua análise da parte 2 a partir daqui
 
-# In[9]:
+# In[94]:
 
 
 # Sua análise da parte 2 começa aqui.
+stars.shape
+
+
+# In[95]:
+
+
+stars.info()
+
+
+# In[96]:
+
+
+stars.describe()
+
+
+# In[97]:
+
+
+stars.head()
+
+
+# In[98]:
+
+
+stars.plot()
 
 
 # ## Questão 4
@@ -209,12 +234,26 @@ stars.loc[:, "target"] = stars.target.astype(bool)
 # 
 # Quais as probabilidade associadas a esses quantis utilizando a CDF empírica da variável `false_pulsar_mean_profile_standardized`? Responda como uma tupla de três elementos arredondados para três casas decimais.
 
-# In[10]:
+# In[114]:
 
 
 def q4():
-    # Retorne aqui o resultado da questão 4.
-    pass
+    false_pulsar = stars[stars.target == 0]
+    false_pulsar_mean_profile_standardized = normalize(false_pulsar.mean_profile)
+    
+    ppf80 = sct.norm.ppf(0.80, 0, 1)
+    ppf90 = sct.norm.ppf(0.90, 0, 1)
+    ppf95 = sct.norm.ppf(0.95, 0, 1)
+    
+    ecdf = ECDF(false_pulsar_mean_profile_standardized)
+    
+    return (round(ecdf(ppf80), 3), round(ecdf(ppf90), 3), round(ecdf(ppf95), 3))
+
+def normalize(df):
+    return (df - df.mean())/df.std()
+    
+
+q4()
 
 
 # Para refletir:

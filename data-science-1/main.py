@@ -127,15 +127,16 @@ q1()
 # 
 # Considere o intervalo $[\bar{x} - s, \bar{x} + s]$, onde $\bar{x}$ é a média amostral e $s$ é o desvio padrão. Qual a probabilidade nesse intervalo, calculada pela função de distribuição acumulada empírica (CDF empírica) da variável `normal`? Responda como uma único escalar arredondado para três casas decimais.
 
-# In[83]:
+# In[87]:
 
 
 def q2():
-    ecdf = ECDF(dataframe['normal'])
+    ecdf = ECDF(dataframe.normal)
     
-    return float(
-        round(ecdf(dataframe.normal.mean() + dataframe['normal'].std()) 
-              - ecdf(dataframe.normal.mean() - dataframe['normal'].std()), 3))
+    ecdf_max = ecdf(dataframe.normal.mean() + dataframe.normal.std()) 
+    ecdf_min = ecdf(dataframe.normal.mean() - dataframe.normal.std())
+    
+    return float(round(ecdf_max - ecdf_min, 3))
     
 q2()
 
@@ -151,12 +152,16 @@ q2()
 # 
 # Em outras palavras, sejam `m_binom` e `v_binom` a média e a variância da variável `binomial`, e `m_norm` e `v_norm` a média e a variância da variável `normal`. Quais as diferenças `(m_binom - m_norm, v_binom - v_norm)`?
 
-# In[7]:
+# In[91]:
 
 
 def q3():
-    # Retorne aqui o resultado da questão 3.
-    pass
+    mean = round(dataframe.binomial.mean() - dataframe.normal.mean(), 3)
+    var = round(dataframe.binomial.var() - dataframe.normal.var(), 3)
+    
+    return (mean, var)
+
+q3()
 
 
 # Para refletir:

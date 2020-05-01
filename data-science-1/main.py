@@ -265,12 +265,22 @@ q4()
 # 
 # Qual a diferença entre os quantis Q1, Q2 e Q3 de `false_pulsar_mean_profile_standardized` e os mesmos quantis teóricos de uma distribuição normal de média 0 e variância 1? Responda como uma tupla de três elementos arredondados para três casas decimais.
 
-# In[11]:
+# In[122]:
 
 
 def q5():
-    # Retorne aqui o resultado da questão 5.
-    pass
+    false_pulsar = stars[stars.target == 0]
+    false_pulsar_mean_profile_standardized = normalize(false_pulsar.mean_profile)
+    
+    quantis_stars = false_pulsar_mean_profile_standardized.quantile((0.25, 0.5, 0.75))
+    
+    ppf25 = sct.norm.ppf(0.25, 0, 1)
+    ppf50 = sct.norm.ppf(0.50, 0, 1)
+    ppf75 = sct.norm.ppf(0.75, 0, 1)
+    
+    return tuple(round(quantis_stars - (ppf25, ppf50, ppf75), 3))
+
+q5()
 
 
 # Para refletir:

@@ -158,16 +158,25 @@ q3()
 # * Plote o histograma dessa variável (com, por exemplo, `bins=25`). A forma do gráfico e o resultado do teste são condizentes? Por que?
 # * Um _box plot_ também poderia ajudar a entender a resposta.
 
+# In[34]:
+
+
+athletes.weight.hist(bins=25)
+
+
 # ## Questão 4
 # 
 # Realize uma transformação logarítmica em na amostra de `weight` da questão 3 e repita o mesmo procedimento. Podemos afirmar a normalidade da variável transformada ao nível de significância de 5%? Responda com um boolean (`True` ou `False`).
 
-# In[9]:
+# In[35]:
 
 
 def q4():
-    # Retorne aqui o resultado da questão 4.
-    pass
+    sample = get_sample(athletes, 'weight', n=3000)
+    sample_log = np.log(sample)
+    return bool(sct.normaltest(sample_log)[1] > 0.05)
+
+q4()
 
 
 # __Para refletir__:

@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="6" name="pytest" skipped="0" tests="7" time="1.855"><testcase classname="test_submit" file="test_submit.py" line="3" name="test_q1" time="0.002"></testcase><testcase classname="test_submit" file="test_submit.py" line="8" name="test_q2" time="0.001"><failure message="assert None == False
-  -None
-  +False">E   assert None == False
-      -None
-      +False</failure></testcase><testcase classname="test_submit" file="test_submit.py" line="13" name="test_q3" time="0.001"><failure message="assert None == False
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="5" name="pytest" skipped="0" tests="7" time="1.896"><testcase classname="test_submit" file="test_submit.py" line="3" name="test_q1" time="0.002"></testcase><testcase classname="test_submit" file="test_submit.py" line="8" name="test_q2" time="0.002"></testcase><testcase classname="test_submit" file="test_submit.py" line="13" name="test_q3" time="0.001"><failure message="assert None == False
   -None
   +False">E   assert None == False
       -None

@@ -125,12 +125,12 @@ q1()
 # 
 # Repita o mesmo procedimento acima, mas agora utilizando o teste de normalidade de Jarque-Bera através da função `scipy.stats.jarque_bera()`. Agora podemos afirmar que as alturas são normalmente distribuídas (ao nível de significância de 5%)? Responda com um boolean (`True` ou `False`).
 
-# In[23]:
+# In[26]:
 
 
 def q2():
     sample = get_sample(athletes, 'weight', n=3000)
-    return sct.jarque_bera(sample)[1] > 0.05
+    return bool(sct.jarque_bera(sample)[1] > 0.05)
 
 q2()
 

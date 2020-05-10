@@ -143,12 +143,14 @@ q2()
 # 
 # Considerando agora uma amostra de tamanho 3000 da coluna `weight` obtida com a função `get_sample()`. Faça o teste de normalidade de D'Agostino-Pearson utilizando a função `scipy.stats.normaltest()`. Podemos afirmar que os pesos vêm de uma distribuição normal ao nível de significância de 5%? Responda com um boolean (`True` ou `False`).
 
-# In[8]:
+# In[31]:
 
 
 def q3():
-    # Retorne aqui o resultado da questão 3.
-    pass
+    sample = get_sample(athletes, 'weight', n=3000)
+    return bool(sct.normaltest(sample)[1] > 0.05)
+
+q3()
 
 
 # __Para refletir__:

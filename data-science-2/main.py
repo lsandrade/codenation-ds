@@ -190,12 +190,20 @@ q4()
 # 
 # Obtenha todos atletas brasileiros, norte-americanos e canadenses em `DataFrame`s chamados `bra`, `usa` e `can`,respectivamente. Realize um teste de hipóteses para comparação das médias das alturas (`height`) para amostras independentes e variâncias diferentes com a função `scipy.stats.ttest_ind()` entre `bra` e `usa`. Podemos afirmar que as médias são estatisticamente iguais? Responda com um boolean (`True` ou `False`).
 
-# In[10]:
+# In[39]:
 
 
 def q5():
-    # Retorne aqui o resultado da questão 5.
-    pass
+    bra = athletes[athletes.nationality == 'BRA']
+    usa = athletes[athletes.nationality == 'USA']
+    can = athletes[athletes.nationality == 'CAN']
+    
+    bra_usa = sct.ttest_ind(bra.height, usa.height, equal_var=False, nan_policy='omit')
+
+    return bool(bra_usa[1] >0.05)
+    
+
+q5()
 
 
 # ## Questão 6

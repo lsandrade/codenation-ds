@@ -222,12 +222,13 @@ q6()
 # 
 # Repita o procedimento da questão 6, mas agora entre as alturas de `usa` e `can`. Qual o valor do p-valor retornado? Responda como um único escalar arredondado para oito casas decimais.
 
-# In[12]:
+# In[47]:
 
 
 def q7():
-    # Retorne aqui o resultado da questão 7.
-    pass
+    return float(sct.ttest_ind(usa.height, can.height, equal_var=False, nan_policy='omit')[1].round(8))
+
+q7()
 
 
 # __Para refletir__:

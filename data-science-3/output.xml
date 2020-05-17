@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="3" name="pytest" skipped="0" tests="4" time="2.422"><testcase classname="test_submit" file="test_submit.py" line="3" name="test_q1" time="0.037"></testcase><testcase classname="test_submit" file="test_submit.py" line="8" name="test_q2" time="0.001"><failure message="assert None == 15
-  -None
-  +15">E   assert None == 15
-      -None
-      +15</failure></testcase><testcase classname="test_submit" file="test_submit.py" line="13" name="test_q3" time="0.001"><failure message="assert None == (186.556, -6.592)
-  -None
-  +(186.556, -6.592)">E   assert None == (186.556, -6.592)
-      -None
-      +(186.556, -6.592)</failure></testcase><testcase classname="test_submit" file="test_submit.py" line="18" name="test_q4" time="0.001"><failure message="TypeError: &apos;NoneType&apos; object is not iterable">E   TypeError: &apos;NoneType&apos; object is not iterable</failure></testcase></testsuite>
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="0" name="pytest" skipped="0" tests="4" time="2.782"><testcase classname="test_submit" file="test_submit.py" line="3" name="test_q1" time="0.034"></testcase><testcase classname="test_submit" file="test_submit.py" line="8" name="test_q2" time="0.030"></testcase><testcase classname="test_submit" file="test_submit.py" line="13" name="test_q3" time="0.049"></testcase><testcase classname="test_submit" file="test_submit.py" line="18" name="test_q4" time="0.206"></testcase></testsuite>

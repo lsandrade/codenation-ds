@@ -9,7 +9,7 @@
 
 # ## _Setup_ geral
 
-# In[ ]:
+# In[1]:
 
 
 from math import sqrt
@@ -26,7 +26,7 @@ from sklearn.decomposition import PCA
 from loguru import logger
 
 
-# In[ ]:
+# In[2]:
 
 
 # Algumas configurações para o matplotlib.
@@ -40,13 +40,13 @@ figsize(12, 8)
 sns.set()
 
 
-# In[ ]:
+# In[3]:
 
 
 fifa = pd.read_csv("fifa.csv")
 
 
-# In[ ]:
+# In[4]:
 
 
 columns_to_drop = ["Unnamed: 0", "ID", "Name", "Photo", "Nationality", "Flag",
@@ -67,32 +67,32 @@ except KeyError:
 
 # ## Inicia sua análise a partir daqui
 
-# In[ ]:
+# In[5]:
 
 
 # Sua análise começa aqui.
 fifa.head()
 
 
-# In[ ]:
+# In[6]:
 
 
 fifa.describe()
 
 
-# In[ ]:
+# In[7]:
 
 
 fifa.info()
 
 
-# In[ ]:
+# In[8]:
 
 
 fifa.shape
 
 
-# In[ ]:
+# In[9]:
 
 
 fifa = fifa.dropna()
@@ -102,7 +102,7 @@ fifa = fifa.dropna()
 # 
 # Qual fração da variância consegue ser explicada pelo primeiro componente principal de `fifa`? Responda como um único float (entre 0 e 1) arredondado para três casas decimais.
 
-# In[ ]:
+# In[10]:
 
 
 def q1():
@@ -119,19 +119,22 @@ q1()
 # 
 # Quantos componentes principais precisamos para explicar 95% da variância total? Responda como un único escalar inteiro.
 
-# In[7]:
+# In[13]:
 
 
 def q2():
-    # Retorne aqui o resultado da questão 2.
-    pass
+    pca = PCA(n_components=.95)
+    principal = pca.fit_transform(fifa)
+    return len(list(pd.DataFrame(principal).columns))
+
+q2()
 
 
 # ## Questão 3
 # 
 # Qual são as coordenadas (primeiro e segundo componentes principais) do ponto `x` abaixo? O vetor abaixo já está centralizado. Cuidado para __não__ centralizar o vetor novamente (por exemplo, invocando `PCA.transform()` nele). Responda como uma tupla de float arredondados para três casas decimais.
 
-# In[8]:
+# In[14]:
 
 
 x = [0.87747123,  -1.24990363,  -1.3191255, -36.7341814,
@@ -147,22 +150,41 @@ x = [0.87747123,  -1.24990363,  -1.3191255, -36.7341814,
 ]
 
 
-# In[9]:
+# In[22]:
 
 
 def q3():
-    # Retorne aqui o resultado da questão 3.
-    pass
+    pca = PCA(n_components=2)
+    pca.fit(fifa)
+    coord = tuple(pca.components_.dot(x).round(3))
+
+    return coord
+
+q3()
 
 
 # ## Questão 4
 # 
 # Realiza RFE com estimador de regressão linear para selecionar cinco variáveis, eliminando uma a uma. Quais são as variáveis selecionadas? Responda como uma lista de nomes de variáveis.
 
-# In[10]:
+# In[28]:
 
+
+from sklearn.linear_model import LinearRegression
+from sklearn.feature_selection import RFE
 
 def q4():
-    # Retorne aqui o resultado da questão 4.
-    pass
+    var = 'Overall'
+    x = fifa.drop(var, axis=1)
+    y = fifa[var]
+
+    linear_regression = LinearRegression()
+    rfe = RFE(estimator=linear_regression, n_features_to_select=5)
+    fit = rfe.fit(x, y)
+    features = fit.support_
+
+
+    return list(x.columns[features])
+
+q4()
 

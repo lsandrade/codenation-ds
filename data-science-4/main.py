@@ -197,12 +197,25 @@ q4()
 # 
 # Você deveria remover da análise as observações consideradas _outliers_ segundo esse método? Responda como uma tupla de três elementos `(outliers_abaixo, outliers_acima, removeria?)` ((int, int, bool)).
 
-# In[12]:
+# In[58]:
 
 
 def q5():
-    # Retorne aqui o resultado da questão 4.
-    pass
+    
+    q1 = np.percentile(countries.Net_migration.dropna(), 25)
+    q3 = np.percentile(countries.Net_migration.dropna(), 75)
+    iqr = q3-q1
+    
+    inf = q1 - 1.5 * iqr
+    sup = q3 + 1.5 * iqr
+    
+    outliers_abaixo = sum(countries.Net_migration < inf)
+    outliers_acima = sum(countries.Net_migration > sup)
+    removeria = (outliers_abaixo + outliers_acima) / countries.Net_migration.shape[0] < 0.1
+    
+    return outliers_abaixo, outliers_acima, removeria
+
+q5()
 
 
 # ## Questão 6

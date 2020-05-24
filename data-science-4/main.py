@@ -9,7 +9,7 @@
 
 # ## _Setup_ geral
 
-# In[63]:
+# In[78]:
 
 
 import pandas as pd
@@ -20,7 +20,7 @@ from sklearn.preprocessing import KBinsDiscretizer, OneHotEncoder, StandardScale
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.datasets import fetch_20newsgroups
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 
 # In[10]:
@@ -240,7 +240,7 @@ categories = ['sci.electronics', 'comp.graphics', 'rec.motorcycles']
 newsgroup = fetch_20newsgroups(subset="train", categories=categories, shuffle=True, random_state=42)
 
 
-# In[76]:
+# In[81]:
 
 
 def q6():
@@ -258,10 +258,23 @@ q6()
 # 
 # Aplique `TfidfVectorizer` ao _data set_ `newsgroups` e descubra o TF-IDF da palavra _phone_. Responda como um único escalar arredondado para três casas decimais.
 
-# In[14]:
+# In[85]:
 
 
 def q7():
-    # Retorne aqui o resultado da questão 4.
-    pass
+    vectorizer = TfidfVectorizer()
+    vectorizer.fit(newsgroup.data)
+    newsgroup_tfidf = vectorizer.transform(newsgroup.data)
+    
+    phone = newsgroup_tfidf[:, vectorizer.vocabulary_['phone']]
+    
+    return round(float(phone.sum()), 3)
+
+q7()
+
+
+# In[ ]:
+
+
+
 

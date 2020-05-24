@@ -9,7 +9,7 @@
 
 # ## _Setup_ geral
 
-# In[31]:
+# In[63]:
 
 
 import pandas as pd
@@ -19,6 +19,8 @@ import sklearn as sk
 from sklearn.preprocessing import KBinsDiscretizer, OneHotEncoder, StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
+from sklearn.datasets import fetch_20newsgroups
+from sklearn.feature_extraction.text import CountVectorizer
 
 
 # In[10]:
@@ -231,12 +233,25 @@ q5()
 # 
 # Aplique `CountVectorizer` ao _data set_ `newsgroups` e descubra o número de vezes que a palavra _phone_ aparece no corpus. Responda como um único escalar.
 
-# In[13]:
+# In[61]:
+
+
+categories = ['sci.electronics', 'comp.graphics', 'rec.motorcycles']
+newsgroup = fetch_20newsgroups(subset="train", categories=categories, shuffle=True, random_state=42)
+
+
+# In[76]:
 
 
 def q6():
-    # Retorne aqui o resultado da questão 4.
-    pass
+    vectorizer = CountVectorizer()
+    newsgroup_vetorizer = vectorizer.fit_transform(newsgroup.data)
+    
+    phone = newsgroup_vetorizer[:, vectorizer.vocabulary_['phone']]
+    
+    return int(phone.sum())
+
+q6()
 
 
 # ## Questão 7

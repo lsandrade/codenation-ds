@@ -9,17 +9,19 @@
 
 # ## _Setup_ geral
 
-# In[65]:
+# In[31]:
 
 
 import pandas as pd
 import numpy as np
 import seaborn as sns
 import sklearn as sk
-from sklearn.preprocessing import KBinsDiscretizer, OneHotEncoder
+from sklearn.preprocessing import KBinsDiscretizer, OneHotEncoder, StandardScaler
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
 
 
-# In[40]:
+# In[10]:
 
 
 # Algumas configurações para o matplotlib.
@@ -33,13 +35,13 @@ figsize(12, 8)
 sns.set()
 
 
-# In[41]:
+# In[11]:
 
 
 countries = pd.read_csv("countries.csv")
 
 
-# In[42]:
+# In[12]:
 
 
 new_column_names = [
@@ -62,20 +64,31 @@ countries.head(5)
 
 # ## Inicia sua análise a partir daqui
 
-# In[43]:
+# In[13]:
 
 
 # Sua análise começa aqui.
 countries.info()
 
 
-# In[44]:
+# In[14]:
+
+
+numerics = ['Pop_density','Coastline_ratio','Net_migration','Infant_mortality','Literacy','Phones_per_1000','Arable','Crops','Other','Climate','Birthrate','Deathrate','Agriculture','Industry','Service']
+
+# ajusta o separador e converte para float
+countries[numerics] = countries[numerics].apply(lambda x: x.str.replace(',','.')).astype(float)
+
+countries.info()
+
+
+# In[15]:
 
 
 countries.describe()
 
 
-# In[45]:
+# In[16]:
 
 
 countries.shape
@@ -85,7 +98,7 @@ countries.shape
 # 
 # Quais são as regiões (variável `Region`) presentes no _data set_? Retorne uma lista com as regiões únicas do _data set_ com os espaços à frente e atrás da string removidos (mas mantenha pontuação: ponto, hífen etc) e ordenadas em ordem alfabética.
 
-# In[56]:
+# In[17]:
 
 
 def q1():
@@ -98,15 +111,7 @@ q1()
 # 
 # Discretizando a variável `Pop_density` em 10 intervalos com `KBinsDiscretizer`, seguindo o encode `ordinal` e estratégia `quantile`, quantos países se encontram acima do 90º percentil? Responda como um único escalar inteiro.
 
-# In[51]:
-
-
-# convert Pop_density to numeric values
-countries.Pop_density = countries.Pop_density.apply(lambda x: x.replace(',', '.'))
-countries.Pop_density = countries.Pop_density.apply(pd.to_numeric)
-
-
-# In[64]:
+# In[20]:
 
 
 
@@ -125,7 +130,7 @@ q2()
 # 
 # Se codificarmos as variáveis `Region` e `Climate` usando _one-hot encoding_, quantos novos atributos seriam criados? Responda como um único escalar.
 
-# In[75]:
+# In[21]:
 
 
 def q3():
@@ -146,7 +151,7 @@ q3()
 # 
 # Após aplicado o _pipeline_ descrito acima aos dados (somente nas variáveis dos tipos especificados), aplique o mesmo _pipeline_ (ou `ColumnTransformer`) ao dado abaixo. Qual o valor da variável `Arable` após o _pipeline_? Responda como um único float arredondado para três casas decimais.
 
-# In[10]:
+# In[22]:
 
 
 test_country = [
@@ -160,12 +165,26 @@ test_country = [
 ]
 
 
-# In[11]:
+# In[56]:
 
 
 def q4():
-    # Retorne aqui o resultado da questão 4.
-    pass
+    
+    pipe = Pipeline(steps = [
+        ('imputer', SimpleImputer(strategy="median")),
+        ('padronizer', StandardScaler())
+    ])
+    
+    numerics = new_column_names[2:]
+    
+    pipe.fit(countries[numerics])
+    
+    test = pd.DataFrame([test_country], columns=countries.columns)
+    result = pd.DataFrame(pipe.transform(test[numerics]), columns=numerics)
+    
+    return round(float(result.Arable), 3)
+
+q4()
 
 
 # ## Questão 5

@@ -132,14 +132,16 @@ q2()
 # 
 # Se codificarmos as variáveis `Region` e `Climate` usando _one-hot encoding_, quantos novos atributos seriam criados? Responda como um único escalar.
 
-# In[21]:
+# In[93]:
 
 
 def q3():
     encoder = OneHotEncoder(sparse=False, dtype=np.int)
     
-    region_climate_encoded = encoder.fit_transform(countries[["Region", "Climate"]].dropna())
+    region_climate_encoded = encoder.fit_transform(countries[['Region','Climate']].fillna(0))
+    
     return region_climate_encoded.shape[1]
+
 
 q3()
 

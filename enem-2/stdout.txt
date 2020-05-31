@@ -1,0 +1,9 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.7.3, pytest-3.6.2, py-1.5.3, pluggy-0.6.0 -- /Users/luanandrade/codenation/enem-2/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/luanandrade/codenation/enem-2, inifile:
+collecting ... collected 1 item
+
+test_main.py::test_0 PASSED                                              [100%]
+
+=========================== 1 passed in 0.41 seconds ===========================
